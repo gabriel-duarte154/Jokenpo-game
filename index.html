@@ -4,13 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jokenpo game</title>
+    <title>Rock, Paper and Scissor</title>
+    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-ico">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Use o console, para jogar o game.</h1>
-    <p>
-        Uma interface de usuário para jogar será implementada em breve.
-    </p>
-    <script src="jokenpo-script.js"></script>
+    <div class="container">
+        <div class="rounds inside">
+            <h1 class="title">Rock, Paper and Scissor.</h1>
+            <div class="current-round">
+                Round: 
+                <span id="round">0/5</span>
+            </div>
+            <div class="result" id="box-result">
+                Computer: Consegue me vencer em uma partida?
+            </div>
+        </div>
+        <div class="seletion inside">
+            <div class="container-icons" id="rock">
+                <img src="icons/rock.png" alt="rock" class="game-icon">
+            </div>
+            <div class="container-icons" id="paper">
+                <img src="icons/paper.png" alt="paper" class="game-icon">
+            </div>
+            <div class="container-icons" id="scissor">
+                <img src="icons/scissor.png" alt="scissor" class="game-icon">
+            </div>
+        </div>
+        <div class="score-container inside"> 
+            <div class="score">
+                <img src="icons/man.png" alt="" class="score-icon">
+                <div id="player-score">
+                    Score: 0
+                </div>
+            </div>
+
+            <div class="score">
+                <img src="icons/computer.png" alt="" class="score-icon">
+                <div id="computer-score">
+                    Score: 0
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="game-script.js"></script>
 </body>
 </html>
