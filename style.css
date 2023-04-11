@@ -11,8 +11,8 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: #111827;
-    color: white;
+    background-color: black;
+    color: #42CF7A;
 }
 .container {
     padding: 1px;
@@ -46,13 +46,15 @@ h1.title {
     font-size: 2em;
 }
 .rounds > .result {
-
-    background-color: #314777;
-    max-height: max-content;
-    max-width: 400px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 35px;
+    color: #42CF7A;
+    max-width: 450px;
     margin: auto;
     border-radius: 5px;
-    padding: 2px 20px;
+    padding: 0px 20px;
     border: 1px solid grey;
 }
 .container-icons {
@@ -62,20 +64,21 @@ h1.title {
     box-shadow: 1px 1px 1px black;
     justify-content: center;
     align-items: center;
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     transition: all 0.09s ease;
     padding: 5px;
+    cursor: pointer;
 }
 .container-icons:hover {
     transform: scale(1.05);
-    border: 1px solid white;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.938);
-    background-color: #314777;
+    border: 1px solid #42CF7A;
+    box-shadow: 2px 1px 10px #42CF7A;
 }
 img.game-icon {
     width: 150px;
     height: 150px;
+    padding: 10px;
 }
 .score-container {
     display: flex;
@@ -93,9 +96,27 @@ img.score-icon {
     flex-direction: column;
     align-items: center;
     height: max-content;
-    background-color: #1e2b47;
     border: 1px solid grey;
     padding: 10px;
     border-radius: 10px;
+}
+
+
+
+/*Aninmation*/
+.result::after {
+    content: "|";
+    opacity: 1;
+    animation: pisca 1s infinite;
+    font-size: 20px;
+}
+
+@keyframes pisca {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
