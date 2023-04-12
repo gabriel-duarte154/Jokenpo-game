@@ -1,7 +1,6 @@
 let rock = document.querySelector("#rock");
 let paper = document.querySelector("#paper");
 let scissor = document.querySelector("#scissor");
-let selectSound = document.querySelector("#select");
 let roundDisplay = document.querySelector("#round");
 let player = document.querySelector("#player-score");
 let computer = document.querySelector("#computer-score");
@@ -20,7 +19,18 @@ const convertPlayerChoise = (choise) => {
 };
 
 function playSound(sound) {
-    sound.play();
+    let theme;
+    if (sound == "winGame") {
+        theme = document.querySelector("#winGame");
+    };
+    if (sound == "gameOver") {
+        theme = document.querySelector("#gameOver")
+    }
+    if (sound == "select") {
+        theme = document.querySelector("#select")
+        theme.currentTime = 0;
+    }
+    theme.play();
 };
 
 function typeWrite(string, element) {
@@ -70,7 +80,7 @@ const playGame = () => {
     let playerChoise = convertPlayerChoise(event.target.parentElement.id);
     let computerChoise = getComputerChoise();
     let result;
-    playSound(selectSound);
+    playSound("select");
     if(playerChoise == computerChoise){
 
         result = "draw";
@@ -86,7 +96,7 @@ const playGame = () => {
     };
 
     showResult(result);
-    selectSound.currentTime = 0;
+    
 };
 
 const endGame = () => {
@@ -97,12 +107,10 @@ const endGame = () => {
     finalScreen.style.cssText = "display: flex;"
     
     if(playerScore > computerScore) {
-        let winGameTheme = document.querySelector("#winGame");
         finalResult.innerText = "Player win!"
-        playSound(winGameTheme);
+        playSound("winGame");
     }else {
-        let gameOverTheme = document.querySelector("#gameOver");
-        playSound(gameOverTheme);
+        playSound("gameOver");
     }
 
     btnReset.addEventListener("click", () => {
@@ -114,6 +122,3 @@ const endGame = () => {
 rock.addEventListener('click', playGame);
 paper.addEventListener('click', playGame);
 scissor.addEventListener('click', playGame);
-
-
-
