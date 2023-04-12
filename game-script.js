@@ -23,30 +23,50 @@ function playSound(sound) {
     sound.play();
 };
 
+function typeWrite(string, element) {
+
+    let array = string.split("");
+    console.log(array)
+    element.innerText = " "
+    array.forEach((letter, i) => {
+        setTimeout(() => {
+            element.innerHTML += letter;
+        }, 10 * i);
+    });
+
+}
 
 const showResult = (result) => {
     let gameLog = document.querySelector("#box-result");
-
+    let content = "";
     if(result == "draw") {
-        gameLog.innerHTML = `É um empate.`;
+        content = "É um empate.";
         
     }else if(result == "player") {
-        gameLog.innerHTML = `Vitória para o player.`
+        content = "Vitória para o player."
         playerScore++
 
     }else if (result == "computer") {
-        gameLog.innerHTML = `Derrota, você pelo menos consegue jogar?`
+        content = "Derrota, você pelo menos consegue jogar?"
         computerScore++
     };
 
+    typeWrite(content, gameLog)
     player.textContent = `Score: ${playerScore}`;
     computer.textContent = `Score: ${computerScore}`; 
     round++
-    if(round >= 5) {endGame()};
+    if(round >= 5) {
+        rock.removeEventListener('click', playGame);
+        paper.removeEventListener('click', playGame);
+        scissor.removeEventListener('click', playGame);
+        setTimeout(() => {
+            endGame()
+        }, 1000 )
+    };
     roundDisplay.innerHTML = `${round}/5`
 };
 
-const playGame = (event) => {
+const playGame = () => {
     let playerChoise = convertPlayerChoise(event.target.parentElement.id);
     let computerChoise = getComputerChoise();
     let result;
