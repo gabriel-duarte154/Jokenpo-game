@@ -17,7 +17,7 @@
                 <span id="round">0/5</span>
             </div>
             <div class="result" id="box-result">
-                Computer: Consegue me vencer em uma partida?
+                Selecione uma das opções abaixo para jogar.
             </div>
         </div>
         <div class="seletion inside">
@@ -47,7 +47,13 @@
             </div>
         </div>
     </div>
-    <audio src="sound-effects/menu-selection.mp3" id="select"></audio>
+    <div class="endGame" id="final-screen">
+        <div class="final-result" id="final-result">Game Over</div>
+        <button class="reset" id="reset">Play Again</button>
+    </div>
+    <audio src="sound-effects/select-soundEffect.mp3" id="select"></audio>
+    <audio src="sound-effects/winGame-theme.mp3" id="winGame"></audio>
+    <audio src="sound-effects/gameOver-theme.mp3" id="gameOver"></audio>
     <script src="game-script.js"></script>
 </body>
 </html>

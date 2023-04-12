@@ -13,6 +13,7 @@ body {
     height: 100vh;
     background-color: black;
     color: #42CF7A;
+    
 }
 .container {
     padding: 1px;
@@ -35,6 +36,7 @@ h1.title {
     justify-content: space-evenly;
     gap: 10px;
     padding: 20px;
+    
 }
 .rounds {
     display: flex;
@@ -120,3 +122,37 @@ img.score-icon {
     }
 }
 
+.endGame {
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    background-color:rgba(0, 0, 0, 0.712) ;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(4px);
+    gap: 50px;
+}
+.endGame > .final-result {
+    font-size: 80px;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px #36a763;
+}
+.endGame > .reset {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.5em;
+    color: #42CF7A;
+    background-color: black;
+    border: 1px solid white;
+    box-shadow: 1px 1px 5px #42CF7A;
+    transition: all 0.5s ease-in-out;
+}
+
+.reset:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 4px 4px  #36a763;
+}

@@ -1,20 +1,19 @@
-const game = () => {
 let rock = document.querySelector("#rock");
 let paper = document.querySelector("#paper");
 let scissor = document.querySelector("#scissor");
 let selectSound = document.querySelector("#select");
-let rounds = document.querySelector("#round");
+let roundDisplay = document.querySelector("#round");
 let player = document.querySelector("#player-score");
 let computer = document.querySelector("#computer-score");
-let pScore = 0;
-let cScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 let round = 0;
-
 
 const getComputerChoise = () => {
     return Math.floor(Math.random() * 3);
 };
-const trasnformPlayerChoise = (choise) => {
+
+const convertPlayerChoise = (choise) => {
     if(choise == 'rock'){return 0};
     if(choise == "paper"){return 1};
     if(choise == "scissor"){return 2};
@@ -26,56 +25,75 @@ function playSound(sound) {
 
 
 const showResult = (result) => {
-    let divResult = document.querySelector("#box-result");
+    let gameLog = document.querySelector("#box-result");
 
     if(result == "draw") {
-        divResult.innerHTML = `Computer: Droga!, empate, na próxima eu 
-        ganharei!`;
+        gameLog.innerHTML = `É um empate.`;
         
     }else if(result == "player") {
-        divResult.innerHTML = `Computer: Raios, você ganhou.`
-        pScore++
+        gameLog.innerHTML = `Vitória para o player.`
+        playerScore++
+
     }else if (result == "computer") {
-        divResult.innerHTML = `Computer: Outra vítoria, para mim, hahaha!`
-        cScore++
+        gameLog.innerHTML = `Derrota, você pelo menos consegue jogar?`
+        computerScore++
     };
 
-    player.textContent = `Score: ${pScore}`;
-    computer.textContent = `Score: ${cScore}`; 
+    player.textContent = `Score: ${playerScore}`;
+    computer.textContent = `Score: ${computerScore}`; 
+    round++
+    if(round >= 5) {endGame()};
+    roundDisplay.innerHTML = `${round}/5`
 }
 
 const playGame = (event) => {
-    playSound(selectSound);
-    let playerChoise = trasnformPlayerChoise(event.target.parentElement.id);
+    let playerChoise = convertPlayerChoise(event.target.parentElement.id);
     let computerChoise = getComputerChoise();
-    let winner;
+    let result;
+    playSound(selectSound);
     if(playerChoise == computerChoise){
-        winner = "draw";
+
+        result = "draw";
     
     } else if (playerChoise == 0  && computerChoise == 2 || 
         playerChoise == 1 && computerChoise == 0 ||
         playerChoise == 2 && computerChoise == 1) {
-            winner = "player";
+
+            result = "player";
     } else {
-        winner = "computer";
+
+        result = "computer";
     };
 
-    showResult(winner);
+    showResult(result);
     selectSound.currentTime = 0;
-    if (round == 5) {
-        window.location.reload(true)
-    };
-    round++
-    rounds.innerHTML = `${round}/5`
 };
+
+const endGame = () => {
+
+    let finalScreen = document.querySelector("#final-screen");
+    let finalResult = document.querySelector("#final-result");
+    let btnReset = document.querySelector("#reset");
+    finalScreen.style.cssText = "display: flex;"
+    
+    if(playerScore > computerScore) {
+        let winGameTheme = document.querySelector("#winGame");
+        finalResult.innerText = "Player win!"
+        playSound(winGameTheme);
+    }else {
+        let gameOverTheme = document.querySelector("#gameOver");
+        playSound(gameOverTheme);
+    }
+
+    btnReset.addEventListener("click", () => {
+        window.location.reload(true)
+    })
+}
 
 
 rock.addEventListener('click', playGame);
 paper.addEventListener('click', playGame);
 scissor.addEventListener('click', playGame);
-
-}
-game();
 
 
 
