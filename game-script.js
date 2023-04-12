@@ -21,7 +21,7 @@ const convertPlayerChoise = (choise) => {
 
 function playSound(sound) {
     sound.play();
-}
+};
 
 
 const showResult = (result) => {
@@ -44,7 +44,7 @@ const showResult = (result) => {
     round++
     if(round >= 5) {endGame()};
     roundDisplay.innerHTML = `${round}/5`
-}
+};
 
 const playGame = (event) => {
     let playerChoise = convertPlayerChoise(event.target.parentElement.id);
@@ -88,7 +88,7 @@ const endGame = () => {
     btnReset.addEventListener("click", () => {
         window.location.reload(true)
     })
-}
+};
 
 
 rock.addEventListener('click', playGame);

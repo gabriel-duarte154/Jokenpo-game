@@ -13,7 +13,6 @@ body {
     height: 100vh;
     background-color: black;
     color: #42CF7A;
-    
 }
 .container {
     padding: 1px;
@@ -36,7 +35,6 @@ h1.title {
     justify-content: space-evenly;
     gap: 10px;
     padding: 20px;
-    
 }
 .rounds {
     display: flex;
@@ -102,10 +100,6 @@ img.score-icon {
     padding: 10px;
     border-radius: 10px;
 }
-
-
-
-/*Aninmation*/
 .result::after {
     content: "|";
     opacity: 1;
@@ -121,7 +115,6 @@ img.score-icon {
         opacity: 1;
     }
 }
-
 .endGame {
     display: none;
     position: absolute;
